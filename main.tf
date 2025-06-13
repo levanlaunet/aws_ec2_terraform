@@ -4,15 +4,15 @@ provider "aws" {
 
 # =========================
 
-resource "aws_key_pair" "ec2_demo_key_pair" {
-  key_name = "ec2_demo_key_pair"
-  public_key = file("./keypair/ec2_demo_key.pub")
+resource "aws_key_pair" "aws_ec2_key_pair" {
+  key_name = "aws_ec2_key_pair"
+  public_key = file("./keypair/aws_ec2_key.pub")
 }
 
 resource "aws_instance" "ec2_demo_instance" {
   ami                     = var.amis[var.region]
   instance_type           = var.instance_type
-  key_name                = aws_key_pair.ec2_demo_key_pair.key_name 
+  key_name                = aws_key_pair.aws_ec2_key_pair.key_name 
   tags = {
     Name = "ec2_demo_instance"
   }
