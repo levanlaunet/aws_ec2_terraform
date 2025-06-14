@@ -1,8 +1,19 @@
+# https://registry.terraform.io/providers/hashicorp/aws/latest
+terraform {
+  required_version = ">=1.6.0"
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 5.40"
+    }
+  }
+}
+
+# =============================
+
 provider "aws" {
   region = var.region
 }
-
-# =========================
 
 resource "aws_key_pair" "ec2_demo_key_pair" {
   key_name = var.keypair_name
